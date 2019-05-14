@@ -269,6 +269,7 @@ strings_yakker.cyc: $(foreach file,$(TEMPLATES),templates/$(file))
 ###############################################################################
 
 build/%.d: %.cyc
+	mkdir -p build
 	$(CYCLONE) -M -MG $< > $@
 
 .PHONY: depend
