@@ -1402,6 +1402,9 @@ using Arg {
   make_option(opt95,"--better-widen", false, "",
               Set_spec,&Flags::better_widen,
               "Construct better loop invariants within vcgen analysis");
+  make_option(opt96,"--help",false,"",
+              Unit_spec,print_options,
+              "print out the available options");
 
   struct List<option_t@`H,`H>@`H global_options[] = {
             &opt1, &opt2, &opt3, &opt4, &opt5, &opt6, &opt7, &opt8, &opt9,
@@ -1413,11 +1416,13 @@ using Arg {
     &opt60,&opt61,&opt62,&opt63,&opt64,&opt65,&opt66,&opt67,&opt68,&opt69,
     &opt70,&opt71,&opt72,&opt73,&opt74,&opt75,&opt76,&opt77,&opt78,&opt79,
     &opt80,&opt81,&opt82,&opt83,&opt84,&opt85,&opt86,&opt87,&opt88,&opt89,
-    &opt90,&opt91,&opt92,&opt93,&opt94,&opt95
+    &opt90,&opt91,&opt92,&opt93,&opt94,&opt95,
+    &opt96
   };
 
   void print_options() {
-    usage(global_options[0],"<program.cyc>");
+    usage(global_options[0],"Usage: cyclone [options] <program.cyc>");
+    exit(0);
   }
 }
 
@@ -1483,7 +1488,7 @@ int main(int argc, string_t<`H> ?`H argv) {
                     cyclone_cc, target_cflags, dash_E, specs_file));
   }
   if (cyclone_files == NULL && ccargs == NULL) {
-    fprintf(stderr,"missing file\n");
+    fprintf(stderr,"cyclone: missing input files\n");
     exit(1);
   }
 
