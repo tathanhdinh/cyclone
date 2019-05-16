@@ -1,0 +1,16 @@
+Build:
+./configure
+make
+make install (optional)
+
+Update genfiles cache (because Cyclone source file will be compiled to C)
+
+...edit some .cyc file in src
+
+make cyclone_src => compile Cyclone compiler's .cyc files into C files in cache
+make update      => copy C files in cache into genfiles
+
+Then rebuild
+
+make
+make install (optional)
